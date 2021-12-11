@@ -1,8 +1,7 @@
 package valdes.com.company;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -10,7 +9,14 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Enter length of array --->>> ");
         int length = readNumber();
-        readArr(length);
+        int[] array = new int[length];
+        System.out.println("Enter elements of array --->>> ");
+        fillArray(array);
+        System.out.println(Arrays.toString(array));
+        System.out.println("Enter a --->>> ");
+        int a = readNumber();
+        Solution solution = new Solution();
+        solution.fight(array, a);
     }
 
     private static int readNumber() {
@@ -29,19 +35,11 @@ public class Main {
         }
     }
 
-    private static void readArr(int length){
+    private static void fillArray(int[] arr){
         Scanner scanner = new Scanner(System.in);
-        String arr;
-        int[] array = new int[length];
-        List<Integer> elementsOfArray = new ArrayList<>();
-
-        System.out.println("Enter elements of array --->>> ");
-
-        for (int i = 0; i < length; i++){
-            int arrayElement;
-            arrayElement = readNumber();
-            elementsOfArray.add(arrayElement);
+        for (int i = 0; i < arr.length; i++){
+            System.out.printf("Enter %d element of array: ", i + 1);
+            arr[i] = scanner.nextInt();
         }
-        System.out.println(elementsOfArray);
     }
 }
