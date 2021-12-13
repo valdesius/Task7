@@ -1,24 +1,54 @@
 package valdes.com.company;
 
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class Solution {
 
-    public int fight(int arr[], int a){
-        List<Integer> tempSequence = new ArrayList<>();
-
-        for(int i = 0; i < arr.length - 1; i++){
-            int f = i + 1;
-
-            if (Math.abs(arr[i] - arr[f]) == a){
-                tempSequence.add(arr[i]);
-                tempSequence.add(arr[f]);
+    public int findMaxElementOfArray(int[] arr){
+        int maxNumber = 0;
+        int maxIndex = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if(maxNumber <= arr[i]) {
+                maxNumber = arr[i];
+                maxIndex = i;
             }
         }
-        System.out.println(tempSequence);
-        return 0;
+
+
+        return maxNumber;
     }
 
+    public int findMaxIndOfArray(int[] arr){
+        int maxNumber = 0;
+        int maxIndex = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if(maxNumber <= arr[i]) {
+                maxNumber = arr[i];
+                maxIndex = i;
+            }
+        }
+
+        return maxIndex;
+    }
+
+    public int findMinElementOfArray(int[] arr) {
+        int min = arr[0];
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] < min)
+                min = arr[i];
+        }
+
+        return min;
+    }
+
+    public int findPositionOfLastNum(int maxInd, int arr[]) {
+        int lastNum = 0;
+            for (int i = 0; i < arr.length; i++) {
+                if (i > maxInd && arr[i] < arr[maxInd] ) {
+                    lastNum = i;
+                    break;
+                }
+            }
+
+        return lastNum;
+    }
 }

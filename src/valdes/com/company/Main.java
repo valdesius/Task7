@@ -10,13 +10,16 @@ public class Main {
         System.out.println("Enter length of array --->>> ");
         int length = readNumber();
         int[] array = new int[length];
+
         System.out.println("Enter elements of array --->>> ");
         fillArray(array);
         System.out.println(Arrays.toString(array));
-        System.out.println("Enter a --->>> ");
-        int a = readNumber();
+
         Solution solution = new Solution();
-        solution.fight(array, a);
+        int maxIndex = solution.findMaxIndOfArray(array);
+        int last = solution.findPositionOfLastNum(maxIndex, array);
+        System.out.println("позиция последнего элемента массива, который \n" +
+                "граничит с максимальным элементом массива: " + last);
     }
 
     private static int readNumber() {
