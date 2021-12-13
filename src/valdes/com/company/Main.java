@@ -7,6 +7,9 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+        SolutionTest solutionTest = new SolutionTest();
+        solutionTest.testProgram();
+
         System.out.println("Enter length of array --->>> ");
         int length = readNumber();
         int[] array = new int[length];
@@ -16,8 +19,11 @@ public class Main {
         System.out.println(Arrays.toString(array));
 
         Solution solution = new Solution();
+
         int maxIndex = solution.findMaxIndOfArray(array);
-        int last = solution.findPositionOfLastNum(maxIndex, array);
+        int minIndex = solution.findMinIndOfArray(array);
+
+        int last = solution.findPositionOfLastNum(maxIndex, minIndex, array);
         System.out.println("позиция последнего элемента массива, который \n" +
                 "граничит с максимальным элементом массива: " + last);
     }
@@ -38,7 +44,7 @@ public class Main {
         }
     }
 
-    private static void fillArray(int[] arr){
+    private static void fillArray(int[] arr) {
         Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < arr.length; i++){
             System.out.printf("Enter %d element of array: ", i + 1);

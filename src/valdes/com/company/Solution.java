@@ -2,23 +2,10 @@ package valdes.com.company;
 
 public class Solution {
 
-    public int findMaxElementOfArray(int[] arr){
-        int maxNumber = 0;
-        int maxIndex = 0;
-        for (int i = 0; i < arr.length; i++) {
-            if(maxNumber <= arr[i]) {
-                maxNumber = arr[i];
-                maxIndex = i;
-            }
-        }
-
-
-        return maxNumber;
-    }
-
     public int findMaxIndOfArray(int[] arr){
         int maxNumber = 0;
         int maxIndex = 0;
+
         for (int i = 0; i < arr.length; i++) {
             if(maxNumber <= arr[i]) {
                 maxNumber = arr[i];
@@ -29,25 +16,27 @@ public class Solution {
         return maxIndex;
     }
 
-    public int findMinElementOfArray(int[] arr) {
+    public int findMinIndOfArray(int[] arr) {
         int min = arr[0];
+        int minInd = 0;
 
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] < min)
                 min = arr[i];
+                minInd = i;
         }
 
-        return min;
+        return minInd;
     }
 
-    public int findPositionOfLastNum(int maxInd, int arr[]) {
+    public int findPositionOfLastNum(int maxInd, int minInd, int arr[]) {
         int lastNum = 0;
-            for (int i = 0; i < arr.length; i++) {
-                if (i > maxInd && arr[i] < arr[maxInd] ) {
-                    lastNum = i;
-                    break;
-                }
+        for (int i = 0; i < arr.length; i++) {
+            if ((i > maxInd && arr[i] < arr[maxInd]) || (i > minInd && arr[i] > arr[minInd] )) {
+                lastNum = i;
+                break;
             }
+        }
 
         return lastNum;
     }
