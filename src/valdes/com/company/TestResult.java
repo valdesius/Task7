@@ -10,5 +10,4 @@ public class TestResult {
     public boolean getTestResult() {
         return testResult;
     }
-
 }
