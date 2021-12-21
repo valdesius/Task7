@@ -1,8 +1,8 @@
 package valdes.com.company;
 
-public class Solution {
+public class PositionOfLastNumInSeq {
 
-    public int findMaxIndOfArray(int[] arr){
+    public int findMaxIndOfArray(int[] arr) {
         int maxNumber = 0;
         int maxIndex = 0;
 
@@ -16,7 +16,7 @@ public class Solution {
         return maxIndex;
     }
 
-    public int findMinIndOfArray(int[] arr) {
+     public int findMinIndOfArray(int[] arr) {
         int min = arr[0];
         int minInd = 0;
 

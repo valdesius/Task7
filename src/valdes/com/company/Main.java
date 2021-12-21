@@ -6,25 +6,30 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
-        SolutionTest solutionTest = new SolutionTest();
-        solutionTest.testProgram();
+    public static void main(String[] args) throws TestNotPassedException {
 
-        System.out.println("Enter length of array --->>> ");
+        TestProgram test = new TestProgram();
+        TestResult testResult = test.testProgram();
+
+        if (!testResult.getTestResult()) {
+            throw new TestNotPassedException();
+        }
+
+        System.out.println("Введите длину массива --->>> ");
         int length = readNumber();
         int[] array = new int[length];
 
-        System.out.println("Enter elements of array --->>> ");
+        System.out.println("Введите элементы массива --->>> ");
         fillArray(array);
         System.out.println(Arrays.toString(array));
 
-        Solution solution = new Solution();
+        PositionOfLastNumInSeq positionOfLastNumInSubSeq = new PositionOfLastNumInSeq();
 
-        int maxIndex = solution.findMaxIndOfArray(array);
-        int minIndex = solution.findMinIndOfArray(array);
+        int maxIndex = positionOfLastNumInSubSeq.findMaxIndOfArray(array);
+        int minIndex = positionOfLastNumInSubSeq.findMinIndOfArray(array);
 
-        int last = solution.findPositionOfLastNum(maxIndex, minIndex, array);
-        System.out.println("позиция последнего элемента массива, который \n" +
+        int last = positionOfLastNumInSubSeq.findPositionOfLastNum(maxIndex, minIndex, array);
+        System.out.println("позиция(индекс) последнего элемента массива, который \n" +
                 "граничит с максимальным элементом массива: " + last);
     }
 
@@ -47,8 +52,12 @@ public class Main {
     private static void fillArray(int[] arr) {
         Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < arr.length; i++){
-            System.out.printf("Enter %d element of array: ", i + 1);
+            try {
+            System.out.printf("Введите %d элемент массива: ", i + 1);
             arr[i] = scanner.nextInt();
+            } catch (InputMismatchException e){
+                System.err.println("Error. Incorrect data entered. You entered string or not correct symbols");
+            }
         }
     }
 }
