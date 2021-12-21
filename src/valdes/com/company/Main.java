@@ -51,11 +51,12 @@ public class Main {
 
     private static void fillArray(int[] arr) {
         Scanner scanner = new Scanner(System.in);
-        for (int i = 0; i < arr.length; i++){
+
+        for (int i = 0; i < arr.length; i++) {
             try {
-            System.out.printf("Введите %d элемент массива: ", i + 1);
-            arr[i] = scanner.nextInt();
-            } catch (InputMismatchException e){
+                System.out.printf("Введите %d элемент массива: ", i + 1);
+                arr[i] = scanner.nextInt();
+            } catch (InputMismatchException e) {
                 System.err.println("Error. Incorrect data entered. You entered string or not correct symbols");
             }
         }
